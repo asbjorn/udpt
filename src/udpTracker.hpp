@@ -22,7 +22,8 @@
 
 
 #include <stdint.h>
-#include <chrono>
+#include <boost/thread.hpp>
+#include <boost/chrono.hpp>
 #include <algorithm>
 #include <string>
 #include <sstream>
