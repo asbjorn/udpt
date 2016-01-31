@@ -56,7 +56,7 @@ namespace UDPT
 		{
 			BOOST_LOG_SEV(m_logger, boost::log::trivial::info) << "Initializing and deploying WebAPI...";
             m_apiSrv = std::shared_ptr<UDPT::Server::HTTPServer>(new UDPT::Server::HTTPServer(conf));
-            m_webApp = std::shared_ptr<UDPT::Server::WebApp>(new UDPT::Server::WebApp(m_apiSrv, m_udpTracker->m_conn.get(), conf));
+            m_webApp = std::shared_ptr<UDPT::Server::WebApp>(new UDPT::Server::WebApp(m_apiSrv, m_udpTracker->m_conn, conf));
             m_webApp->deploy();
         }
 

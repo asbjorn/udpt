@@ -97,11 +97,8 @@ namespace UDPT
 			return true;
 		}
 
-		WebApp::WebApp(std::shared_ptr<HTTPServer> srv, DatabaseDriver *db, const boost::program_options::variables_map& conf) : m_conf(conf), m_server(srv)
+		WebApp::WebApp(std::shared_ptr<HTTPServer> srv, std::shared_ptr<UDPT::Data::DatabaseDriver> db, const boost::program_options::variables_map& conf) : m_conf(conf), m_server(srv), m_db(db)
 		{
-			this->db = db;
-			// TODO: Implement authentication by keys
-
 			m_server->setData("webapp", this);
 		}
 
@@ -150,7 +147,7 @@ namespace UDPT
 			}
 
 
-			if (this->db->removeTorrent(hash))
+			if (m_db->removeTorrent(hash))
 				resp->write("{\"success\":true}");
 			else
 				resp->write("{\"error\":\"failed to remove torrent from DB\"}");
@@ -171,7 +168,7 @@ namespace UDPT
 				return;
 			}
 
-			if (this->db->addTorrent(hash))
+			if (m_db->addTorrent(hash))
 				resp->write("{\"success\":true}");
 			else
 				resp->write("{\"error\":\"failed to add torrent to DB\"}");

@@ -38,14 +38,14 @@ namespace UDPT
 		class WebApp
 		{
 		public:
-			WebApp(std::shared_ptr<HTTPServer> , DatabaseDriver *, const boost::program_options::variables_map& conf);
+			WebApp(std::shared_ptr<HTTPServer>, std::shared_ptr<UDPT::Data::DatabaseDriver> db, const boost::program_options::variables_map& conf);
 			virtual ~WebApp();
 			void deploy ();
 			
 
 		private:
 			std::shared_ptr<HTTPServer> m_server;
-			UDPT::Data::DatabaseDriver *db;
+			std::shared_ptr<UDPT::Data::DatabaseDriver> m_db;
 			const boost::program_options::variables_map& m_conf;
 
 			static void handleRoot (HTTPServer*,HTTPServer::Request*, HTTPServer::Response*);
