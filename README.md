@@ -16,7 +16,12 @@ We didn't really work on creating any installer, at the moment you can just run 
 Building udpt is pretty straightforward, just download the project or clone the repo:
 
 UDPT requires the SQLite3, boost_program_options and boost_thread develpment packages to be installed.
+For Ubuntu 16.04 you can simply run this apt-get to get all the dependencies:
+```
+$ sudo apt-get install sqlite3 libsqlite3-dev libboost-program-options-dev libboost-system-dev libboost-log-dev 
+```
 
+Then
 <pre>
     $ git clone https://github.com/naim94a/udpt.git
     $ cd udpt
